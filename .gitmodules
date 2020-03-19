@@ -1,3 +1,6 @@
 [submodule "cog"]
 	path = cog
 	url = https://github.com/LiamBindle/cog.git
+[submodule "GCHPctm"]
+	path = GCHPctm
+	url = https://github.com/geoschem/GCHPctm
