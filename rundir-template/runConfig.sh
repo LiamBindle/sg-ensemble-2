@@ -14,7 +14,7 @@
 # of cores divided by number of nodes. Make sure you have these
 # resources available.
 TOTAL_CORES={{ job['num_cores'] }}
-NUM_NODES={{ job['num_nodes'] }}
+NUM_NODES={{ job['num_cores'] // job['cores_per_node'] }}
 NUM_CORES_PER_NODE={{ job['cores_per_node'] }}
 
 # Cores are distributed across each of the six cubed sphere faces using
