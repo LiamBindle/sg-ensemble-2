@@ -23,6 +23,7 @@ ulimit -s unlimited              # stacksize
 # Execute simulation
 cd {{ paths['run_directory'] }}
 rm -f cap_restart gcchem*
+chmod +x runConfig.sh
 ./runConfig.sh
 export TMPDIR="$__LSF_JOB_TMPDIR__"
 mpirun -x LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH -np {{ job['num_cores'] }} ./geos
