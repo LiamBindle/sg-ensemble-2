@@ -13,9 +13,9 @@
 # Total cores must be divisible by 6. Cores per node must equal number
 # of cores divided by number of nodes. Make sure you have these
 # resources available.
-TOTAL_CORES=48
-NUM_NODES=3
-NUM_CORES_PER_NODE=16
+TOTAL_CORES={{ job['num_cores'] }}
+NUM_NODES={{ job['num_nodes'] }}
+NUM_CORES_PER_NODE={{ job['cores_per_node'] }}
 
 # Cores are distributed across each of the six cubed sphere faces using
 # configurable parameters NX and NY. Each face is divided into NX by NY/6
@@ -50,7 +50,7 @@ NY=6 # Ignore if NXNY_AUTO=ON
 #------------------------------------------------
 #   Internal Cubed Sphere Resolution
 #------------------------------------------------
-CS_RES=48 # 24 ~ 4x5, 48 ~ 2x2.5, 90 ~ 1x1.25, 180 ~ 1/2 deg, 360 ~ 1/4 deg
+CS_RES={{ grid['cs_res'] }} # 24 ~ 4x5, 48 ~ 2x2.5, 90 ~ 1x1.25, 180 ~ 1/2 deg, 360 ~ 1/4 deg
 
 #------------------------------------------------
 #    Debug Options
@@ -86,8 +86,8 @@ MEMORY_DEBUG_LEVEL=0
 # section below. See more information about this on the GCHP wiki.
 #
 Start_Time="20160701 000000"
-End_Time="20160801 000000"
-Duration="00000100 000000"
+End_Time="20160901 000000"
+Duration="00000200 000000"
 
 #------------------------------------------------
 #    Diagnostics
@@ -188,7 +188,7 @@ WetLossLS_mode=${common_mode}
 # on gcgrid do not contain HEMCO variables which will have the same effect
 # as turning the HEMCO restart file option off in GC classic. However, all 
 # output restart files will contain HEMCO restart variables for your next run.
-INITIAL_RESTART=initial_GEOSChem_rst.c${CS_RES}_benchmark.nc
+INITIAL_RESTART=initial_restart_file.nc
 
 # You can specify a custom initial restart file here to overwrite:
 # INITIAL_RESTART=your_restart_filename_here
@@ -237,18 +237,11 @@ Turn_on_Non_Local_Mixing=T
 # NOTE: Default timesteps for c24 and c48, the cubed-sphere rough equivalents
 # of 4x5 and 2x2.5, are the same as defaults timesteps in GEOS-Chem Classic
 #
-if [[ $CS_RES -lt 180 ]]; then
-    ChemEmiss_Timestep_sec=1200
-    TransConv_Timestep_sec=600
-    TransConv_Timestep_HHMMSS=001000
-    Reference_Time=121000
-else
-    ChemEmiss_Timestep_sec=600
-    TransConv_Timestep_sec=300
-    TransConv_Timestep_HHMMSS=000500
-    # For reduced timesteps must shift reference time to shift alarm ringtime
-    Reference_Time=121001
-fi
+ChemEmiss_Timestep_sec=600
+TransConv_Timestep_sec=300
+TransConv_Timestep_HHMMSS=000500
+# For reduced timesteps must shift reference time to shift alarm ringtime
+Reference_Time=121001
 
 #------------------------------------------------
 #    Multi-run option
