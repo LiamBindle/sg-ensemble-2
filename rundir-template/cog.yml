@@ -37,4 +37,4 @@ paths:
     type: str
     desc: "run directory"
   validate:
-    - required: [ "restart_file", "run_directory" ]
+    - required: [ "run_directory" ]
