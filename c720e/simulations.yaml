@@ -73,5 +73,4 @@
   target_lat: -7.0
   target_lon: 108.0
   short_name: "SE4"
-cutoff: 122
 # >122 is cutoff
