@@ -1,0 +1,14 @@
+grid:
+  cs_res: 180
+  stretch_factor: 1.0
+  target_lat: -90.0
+  target_lon: 170.0
+job:
+  cores_per_node: 30
+  num_cores: 750
+  num_nodes: 25
+  queue: general
+paths:
+  restart_file: initial_restart_file.nc
+templates:
+- /scratch1/liam.bindle/sg-ensemble-2/rundir-template
