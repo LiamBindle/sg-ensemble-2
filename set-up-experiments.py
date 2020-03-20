@@ -11,7 +11,7 @@ if __name__ == '__main__':
         sims = yaml.safe_load(f)
 
     queue = sys.argv[2]
-    cores_per_node = 36 if queue == 'rvmartin' else 30
+    cores_per_node = 30
 
     cutoff = 122
 

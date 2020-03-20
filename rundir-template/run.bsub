@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 #BSUB -q {{ job['queue'] }}
-#BSUB -n {{ job['num_cores'] }}
+#BSUB -n {{ job['num_cores'] + job['num_nodes'] }}
 #BSUB -W 96:00
-#BSUB -R "rusage[mem=300000] span[ptile={{ job['cores_per_node'] }}] select[mem < 2000000]"
+#BSUB -R "rusage[mem=300000] span[ptile={{ job['cores_per_node'] + 1 }}] select[mem < 2000000]"
 #BSUB -a 'docker(registry.gsc.wustl.edu/sleong/base-engineering-gcc)'
 #BSUB -J "E2 run"
 #BSUB -g /$USER/E2
