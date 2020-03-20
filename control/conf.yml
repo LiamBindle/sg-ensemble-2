@@ -9,6 +9,6 @@ job:
   num_nodes: 25
   queue: general
 paths:
-  restart_file: initial_restart_file.nc
+  run_directory: /scratch1/liam.bindle/sg-ensemble-2/control
 templates:
 - /scratch1/liam.bindle/sg-ensemble-2/rundir-template
